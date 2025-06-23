@@ -1,6 +1,6 @@
-# 🧾 Gerador de PDF - Notas e Frequências CESUSC
+# 🧾 Gerador de PDF - Notas e Frequências CESUSC (Modo CSV)
 
-Este é um aplicativo desktop em Python com interface gráfica (Tkinter) que automatiza o processo de login no portal acadêmico do CESUSC, acessa a seção de **Notas e Frequências** e gera automaticamente um **PDF com seu boletim**.
+Este é um aplicativo desktop em Python com interface gráfica (Tkinter) que automatiza o processo de login no portal acadêmico do CESUSC, acessa a seção de **Notas e Frequências** e gera automaticamente um **PDF com o boletim de múltiplos alunos** a partir de um arquivo **CSV**.
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
@@ -10,19 +10,20 @@ Este é um aplicativo desktop em Python com interface gráfica (Tkinter) que aut
 
 ## ✨ Funcionalidades
 
-✅ Interface amigável e simples para alunos  
+✅ Leitura de múltiplas matrículas e senhas via CSV  
 ✅ Login automatizado no portal do CESUSC  
 ✅ Acesso direto às Notas e Frequências  
 ✅ Geração de PDF automaticamente via navegador  
-✅ Seleção de pasta para salvar o arquivo  
-✅ Mensagens de erro e sucesso  
-✅ Animação de carregamento com GIF
+✅ Seleção de pasta para salvar os arquivos  
+✅ Mensagens de erro e sucesso para cada aluno  
+✅ Animação de carregamento com GIF  
+✅ Interface gráfica simples e funcional  
 
 ---
 
 ## 🖼️ Interface
 
-> A interface foi feita com Tkinter e inclui campos de matrícula, senha, botão para exibir/ocultar senha, botão de execução e uma animação com GIF durante o carregamento do processo.
+> A interface foi feita com Tkinter e inclui um botão para selecionar o arquivo `.csv` e iniciar o processo de geração dos boletins em lote, além de exibir o status atual e animação de carregamento.
 
 ---
 
@@ -40,33 +41,60 @@ Este é um aplicativo desktop em Python com interface gráfica (Tkinter) que aut
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/gerador-pdf-cesusc.git
-   cd gerador-pdf-cesusc
+   git clone https://github.com/LCFJunior/Automacao_Cesusc.git
+   cd Automacao_Cesusc
+   ```
 
 2. Instale as dependências:
    ```bash
    pip install -r requirements.txt
+   ```
 
-3. Execute o script:
+3. Prepare o arquivo `alunos.csv` contendo as **credenciais dos alunos**, uma por linha, no seguinte formato:
+   ```
+   matricula1, senha1
+   matricula2, senha2
+   ```
+
+   > Exemplo:
+   ```
+   1234567, senha123
+   7654321, 321senha
+   ```
+
+4. Execute o script:
    ```bash
-   python main.py
+   python cesusc.py
+   ```
 
-4. Preencha sua matrícula e senha, escolha a pasta onde deseja salvar o PDF e aguarde a geração automática.
+5. Na interface que abrir:
+   - Clique em **"Selecionar CSV de Alunos"**
+   - Selecione o arquivo `.csv`
+   - Escolha a pasta onde deseja salvar os PDFs
+   - Aguarde o processo automático para cada aluno
+
+---
 
 ## 📁 Estrutura esperada
-  ```bash
-  gerador-pdf-cesusc/
-  ├── loading.gif               # Animação de carregamento (obrigatória)
-  ├── main.py                   # Código principal
-  ├── README.md                 # Este arquivo
-  └── requirements.txt          # Lista de dependências
+
+```bash
+Automacao_Cesusc/
+├── alunos.csv                # Arquivo com credenciais (um por linha)
+├── loading.gif              # Animação de carregamento (obrigatória)
+├── main.py                  # Código principal
+├── README.md                # Este arquivo
+└── requirements.txt         # Lista de dependências
 ```
 
+---
+
 ## 📌 Requisitos
-- Python 3.10 ou superior
-- Navegador Google Chrome instalado no sistema
 
+- Python 3.10 ou superior  
+- Navegador **Google Chrome** instalado no sistema
 
+---
 
+## 📜 Licença
 
-
+Este projeto está sob a licença [MIT](https://opensource.org/licenses/MIT).
